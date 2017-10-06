@@ -1,10 +1,11 @@
 {
-  "name": "CSSJSON",
+  "name": "CSSJSON Lite",
   "main": "cssjson.js",
-  "version": "2.1.0",
-  "homepage": "https://github.com/aramk/CSSJSON",
+  "version": "1.0.0",
+  "homepage": "https://github.com/pablocusto/CSSJSON",
   "authors": [
-    "Aram Kocharyan https://github.com/aramk"
+    "Aram Kocharyan https://github.com/aramk",
+	"Pablo Custo https://github.com/pablocusto/"
   ],
   "license": "MIT",
   "description": "Converts CSS to JSON and back.",

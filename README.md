@@ -1,8 +1,10 @@
-# CSS-JSON Converter for JavaScript
+# Css2Json Lite Converter for JavaScript
 
-CSS-JSON Converter for JavaScript  
+Css2Json Lite Converter for JavaScript  
 Converts CSS to JSON and back.  
-Version 2.1  
+Version 1.0
+
+Based on: CSSJSON v2.1 of Aram Kocharyan https://github.com/aramk/CSSJSON 
 
 Released under the MIT license.
 
@@ -11,22 +13,15 @@ Released under the MIT license.
 ### JavaScript
 ```javascript
 // To JSON
-var json = CSSJSON.toJSON(cssString);
+var json = CSS2JSON.toJSON(cssString);
 
 // To CSS
-var css = CSSJSON.toCSS(jsonObject);
+var css = CSS2JSON.toCSS(jsonObject);
 
 // Appending to DOM (HTMLHeadElement)
 // alias (global): createCSS(css);
-// CSSJSON.toHEAD(json);
-CSSJSON.toHEAD(css); // returns HTMLStyleElement
-```
-
-### npm run / CLI
-To use CSSJSON from your command-line interface or with npm scripts there is [cssjson-cli](https://github.com/jakedex/cssjson-cli).
-
-```
-$ cssjson input_file [--to-css] [--output|-o output_file]
+// CSS2JSON.toHead(json);
+CSS2JSON.toHead(css); // returns HTMLStyleElement
 ```
 
 ## Sample
@@ -37,68 +32,106 @@ See example.html
 
 ```json
 {
-  "children": {
-    "@media (max-width: 800px)": {
-      "children": {
-        "#main #comments": {
-          "children": {},
-          "attributes": {
-            "margin": "0px",
-            "width": "auto",
-            "background": "red"
-          }
-        },
-        "#main #buttons": {
-          "children": {},
-          "attributes": {
-            "padding": "5px 10px",
-            "color": "blue"
-          }
-        }
-      },
-      "attributes": {}
+  "cssjson": {
+    "body": {
+      "font-family": "arial, sans-serif",
+      "font-size": "18px"
     },
-    "#main #content": {
-      "children": {},
-      "attributes": {
-        "margin": "0 7.6%",
-        "width": "auto"
-      }
+    "label": {
+      "display": "inline-block",
+      "font-size": "22px"
     },
-    "#nav-below": {
-      "children": {},
-      "attributes": {
-        "border-bottom": "1px solid #ddd",
-        "margin-bottom": "1.625em",
-        "background-image": "url(http://www.example.com/images/im.jpg)"
-      }
+    ".title": {
+      "color": "pink",
+      "font-size": "38px"
+    },
+    ".title .num": {
+      "font-size": "46px"
+    },
+    ".title .version": {
+      "font-size": "26px",
+      "margin-left": "10px"
+    },
+    ".sub-title": {
+      "display": "inline-block",
+      "position": "absolute",
+      "color": "grey",
+      "font-size": "34px",
+      "margin-top": "40px",
+      "margin-left": "-70px",
+      "-webkit-transform": "rotate(-8deg)",
+      "/* Chrome, Safari, Opera */\n\t transform": "rotate(-8deg)"
+    },
+    ".editor": {
+      "width": "-webkit-fill-available",
+      "min-height": "400px",
+      "max-height": "600px",
+      "outline": "1px solid rgb(128,128,128)"
+    },
+    ".editor:hover": {
+      "outline": "1px solid rgb(100,100,250)"
+    },
+    ".editor:focus": {
+      "outline": "2px solid rgb(250,128,250) !important"
+    },
+    ".btn": {
+      "display": "inline-block",
+      "min-width": "170px",
+      "margin-bottom": "10px",
+      "float": "right"
     }
-  },
-  "attributes": {}
+  }
 }
 ```
 
 ### CSS
 
 ```css
-@media (max-width: 800px) {
-    #main #comments {
-        margin: 0px;
-        width: auto;
-        background: red;
-    }
-    #main #buttons {
-        padding: 5px 10px;
-        color: blue;
-    }
+body {
+	font-family: arial, sans-serif;
+	font-size: 18px;
 }
-#main #content {
-    margin: 0 7.6%;
-    width: auto;
+label {
+	display: inline-block;
+	font-size: 22px;
 }
-#nav-below {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 1.625em;
-    background-image: url(http://www.example.com/images/im.jpg);
+.title{
+	color: pink;
+	font-size: 38px;
+}
+.title .num {
+	font-size: 46px;
+}
+.title .version {
+	font-size: 26px;
+	margin-left: 10px;
+}
+.sub-title{
+	display: inline-block;
+	position:absolute;
+	color: grey;
+	font-size: 34px;
+	margin-top: 40px;
+	margin-left: -70px;
+	 -webkit-transform: rotate(-8deg); /* Chrome, Safari, Opera */
+	 transform: rotate(-8deg);
+}
+.editor {
+	width: -webkit-fill-available;
+	min-height: 400px;
+	max-height: 600px;
+	outline: 1px solid rgb(128,128,128);
+}
+.editor:hover {
+	outline: 1px solid rgb(100,100,250);
+}
+.editor:focus {
+	outline: 2px solid rgb(250,128,250) !important;
+}
+.btn {
+	display: inline-block;
+	min-width: 170px;
+	margin-bottom: 10px;
+	float:right;
 }
 ```

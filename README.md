@@ -1,4 +1,4 @@
-# Css2Json Lite Converter for JavaScript
+# Css2Json Lite Converter for JavaScript  DEMO:https://pablocusto.github.io/Css2Json-Lite/
 
 Css2Json Lite Converter for JavaScript  
 Converts CSS to JSON and back.  
@@ -26,7 +26,7 @@ CSS2JSON.toHead(css); // returns HTMLStyleElement
 
 ## Sample
 
-See example.html
+See https://pablocusto.github.io/Css2Json-Lite/
 
 ### JSON
 

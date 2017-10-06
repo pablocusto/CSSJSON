@@ -8,6 +8,10 @@ Based on: CSSJSON v2.1 of Aram Kocharyan https://github.com/aramk/CSSJSON
 
 Released under the MIT license.
 
+## Live Demo
+
+See https://pablocusto.github.io/Css2Json-Lite/
+
 ## Usage
 
 ### JavaScript
@@ -23,10 +27,6 @@ var css = CSS2JSON.toCSS(jsonObject);
 // CSS2JSON.toHead(json);
 CSS2JSON.toHead(css); // returns HTMLStyleElement
 ```
-
-## Sample
-
-See https://pablocusto.github.io/Css2Json-Lite/
 
 ### JSON
 

@@ -1,4 +1,4 @@
-# Css2Json Lite Converter for JavaScript  DEMO:https://pablocusto.github.io/Css2Json-Lite/
+# Css2Json Lite Converter for JavaScript 
 
 Css2Json Lite Converter for JavaScript  
 Converts CSS to JSON and back.  

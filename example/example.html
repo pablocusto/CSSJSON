@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.1" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+		<style id="main-css">body {
+	font-family: arial, sans-serif;
+	font-size: 18px;
+}
+label {
+	display: inline-block;
+	font-size: 22px;
+}
+.title{
+	color: pink;
+	font-size: 38px;
+}
+.title .num {
+	font-size: 46px;
+}
+.title .version {
+	font-size: 26px;
+	margin-left: 10px;
+}
+.sub-title{
+	display: inline-block;
+	position:absolute;
+	color: grey;
+	font-size: 34px;
+	margin-top: 40px;
+	margin-left: -70px;
+	 -webkit-transform: rotate(-8deg); /* Chrome, Safari, Opera */
+	 transform: rotate(-8deg);
+}
+.editor {
+	width: -webkit-fill-available;
+	min-height: 400px;
+	max-height: 600px;
+	outline: 1px solid rgb(128,128,128);
+}
+.editor:hover {
+	outline: 1px solid rgb(100,100,250);
+}
+.editor:focus {
+	outline: 2px solid rgb(250,128,250) !important;
+}
+.btn {
+	display: inline-block;
+	min-width: 170px;
+	margin-bottom: 10px;
+	float:right;
+}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="col s12">
+				<div class="title">CSS<span class="num">2</span>JSON Lite<span class="version">v1.0</span><span class="sub-title">Live Demo</span></div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<label>CSS</label>
+					<button class="waves-effect waves-light btn" onclick="css2json(); return false;">TO JSON &#9654;</button>
+					<div id="css-editor" class="editor"></div>
+				</div>
+				<div class="col s6">
+					<label>JSON</label>
+					<button class="waves-effect waves-light btn" onclick="json2css(); return false;">&#9668; TO CSS</button>
+					<div id="json-editor" class="editor"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Add this if you're supporting IE 7, 8 -->
+		<script type="text/javascript" src="json2.js"></script>
+		<script type="text/javascript" src="css2json.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var css_editor = ace.edit('css-editor');
+			var json_editor = ace.edit('json-editor');
+			
+			css_editor.setOptions({
+				maxLines: 45,
+				mode: "ace/mode/css",
+				autoScrollEditorIntoView: true
+			});
+			
+			json_editor.setOptions({
+				maxLines: 45,
+				mode: "ace/mode/json",
+				autoScrollEditorIntoView: true
+			});
+			
+			ace.config.loadModule("ace/ext/emmet", function() {
+				ace.require("ace/lib/net").loadScript("https://cloud9ide.github.io/emmet-core/emmet.js", function() {
+					css_editor.setOption("enableEmmet", true);
+					json_editor.setOption("enableEmmet", true);
+				});
+			});
+			
+			ace.config.loadModule("ace/ext/language_tools", function() {
+				css_editor.setOptions({
+					enableSnippets: true,
+					enableBasicAutocompletion: true
+				});
+				json_editor.setOptions({
+					enableSnippets: true,
+					enableBasicAutocompletion: true
+				});
+			});
+		
+			function css2json()
+			{
+				var str_css = css_editor.getValue();
+				
+				var json = CSS2JSON.toJSON( str_css );
+				
+				json_editor.setValue( JSON.stringify(json, undefined, 2) );
+				json_editor.moveCursorTo(0,0);
+				
+				CSS2JSON.toHEAD( json );
+				
+				console.dir(json);
+				
+			}
+			function json2css()
+			{
+				var str_json = json_editor.getValue();
+				
+				var json = JSON.parse( str_json );
+				
+				var css = CSS2JSON.toCSS( json );
+				
+				css_editor.setValue( css );
+				css_editor.moveCursorTo(0,0);
+				
+				CSS2JSON.toHEAD( css );
+				
+				console.log(css);
+			}
+			
+			
+			css_editor.setValue( $('#main-css').text() );
+			css_editor.moveCursorTo(0,0);
+			css2json();
+			
+		</script>
+	</body>
+</html>

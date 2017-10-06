@@ -5,55 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.1" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-		<style type="text/css" id="main-css">body {
-	font-family: arial, sans-serif;
-	font-size: 18px;
-}
-label {
-	display: inline-block;
-	font-size: 22px;
-}
-.title{
-	color: pink;
-	font-size: 38px;
-}
-.title .num {
-	font-size: 46px;
-}
-.title .version {
-	font-size: 26px;
-	margin-left: 10px;
-}
-.sub-title{
-	display: inline-block;
-	position:absolute;
-	color: grey;
-	font-size: 34px;
-	margin-top: 40px;
-	margin-left: -70px;
-	 -webkit-transform: rotate(-8deg); /* Chrome, Safari, Opera */
-	 transform: rotate(-8deg);
-}
-.editor {
-	width: -webkit-fill-available;
-	min-height: 400px;
-	max-height: 600px;
-	outline: 1px solid rgb(128,128,128);
-}
-.editor:hover {
-	outline: 1px solid rgb(100,100,250);
-}
-.editor:focus {
-	outline: 2px solid rgb(250,128,250) !important;
-}
-.btn {
-	display: inline-block;
-	min-width: 170px;
-	margin-bottom: 10px;
-	float:right;
-}
-
-		</style>
+		<link rel="stylesheet" href="https://pablocusto.github.io/Css2Json-Lite/index.css">
 	</head>
 	<body>
 		<div class="container">
@@ -100,7 +52,7 @@ label {
 			});
 			
 			ace.config.loadModule("ace/ext/emmet", function() {
-				ace.require("ace/lib/net").loadScript("http://cloud9ide.github.io/emmet-core/emmet.js", function() {
+				ace.require("ace/lib/net").loadScript("https://cloud9ide.github.io/emmet-core/emmet.js", function() {
 					css_editor.setOption("enableEmmet", true);
 					json_editor.setOption("enableEmmet", true);
 				});
@@ -148,7 +100,7 @@ label {
 			}
 			
 			
-			$.get('https://raw.githubusercontent.com/pablocusto/CSSJSON/master/example.css', function( result ) {
+			$.get('https://pablocusto.github.io/Css2Json-Lite/index.css', function( result ) {
 				css_editor.setValue( result );
 				css_editor.moveCursorTo(0,0);
 				css2json();
